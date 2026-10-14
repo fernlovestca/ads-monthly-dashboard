@@ -244,7 +244,26 @@ th .sub{font-size:10px;color:#93A0B3}
 .vsc .vd{font-size:11px;font-weight:700;margin-top:3px}
 .vsc .vd.up{color:var(--green)}.vsc .vd.dn{color:var(--red)}.vsc .vd.nt{color:#8894A8}
 
+/* ---------- channel sub-tabs ---------- */
+.subsel{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:13px 18px;background:#F7F9FD;border-bottom:1px solid var(--line)}
+.subbtn{border:1px solid var(--line);background:#fff;font-family:inherit;border-radius:12px;padding:11px 15px;
+  cursor:pointer;text-align:left;transition:.15s;display:flex;align-items:center;gap:12px}
+.subbtn:hover{border-color:var(--sky)}
+.subbtn .sic{width:33px;height:33px;border-radius:9px;background:#EFF3FA;color:var(--blue);display:flex;
+  align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.subbtn .s1{display:block;font-size:13.5px;font-weight:800;color:var(--navy);line-height:1.25}
+.subbtn .s2{display:block;font-size:11px;color:var(--muted);margin-top:1px;line-height:1.4}
+.subbtn.on{background:var(--navy);border-color:var(--navy)}
+.subbtn.on .s1{color:#fff}
+.subbtn.on .s2{color:#B9C6DC}
+.subbtn.on .sic{background:rgba(255,255,255,.17);color:#fff}
+.subpane>.sec:first-child{border-top:0}
+@media(max-width:700px){.subsel{grid-template-columns:1fr}}
+.hintfoot{border-top:1px solid var(--line);padding:12px 18px 15px}
+.hintfoot .hint{margin:0}
+
 /* ---------- campaign block heading ---------- */
+.blkno{width:31px;height:31px;border-radius:50%;background:var(--blue);color:#fff;font-size:15px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-.5px}
 .blkh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 9px;padding:9px 13px;background:#F4F7FC;border-left:4px solid var(--blue);border-radius:0 10px 10px 0}
 .blkn{font-size:13.5px;font-weight:800;color:var(--navy);letter-spacing:-.2px}
 .blkt{font-size:10.5px;font-weight:700;color:#5A6B86;background:#fff;border:1px solid var(--line);padding:2px 9px;border-radius:20px}
@@ -427,7 +446,7 @@ a.ipbtn:hover{background:var(--navy)}
 <div class="wrap">
 <div class="top">
   <div class="brand"><span class="bi">◧</span><span>Ads Dashboard · October 2026<small>WPC · LUCK · ATELIER</small></span></div>
-  <div class="topright">Shopee 5–8 ต.ค. · Google Ads 1–7 ต.ค. 2569 · IG รอเริ่ม 13 ต.ค.<br>Weekly + Monthly Summary ในไฟล์เดียว</div>
+  <div class="topright">Shopee 5–8 ต.ค. · Google Ads 1–7 ต.ค. 2569 · IG ATELIER เริ่ม 15 ต.ค.<br>Weekly + Monthly Summary ในไฟล์เดียว</div>
 </div>
 <div class="tabs" id="tabs"></div>
 <div id="panes"></div>
@@ -471,7 +490,7 @@ const WEEKS = [
  biz:[
   {name:'LUCK Thailand', color:'var(--luck)', sub:'Shopee Ads', ch:[
 
-   {name:'Shopee Ads LUCK', key:'shopee', sub:'แคมเปญรอบใหม่ · 5–8 ต.ค. · 4 วัน · 4 แคมเปญ · อยู่ในช่วงเรียนรู้', icon:'bag', color:'#2E5496', tag:['ช่วงเรียนรู้','wt'],
+   {name:'Shopee Ads LUCK', key:'shopee', dsub:'KPI · 4 แคมเปญ · สรุปผล', sub:'แคมเปญรอบใหม่ · 5–8 ต.ค. · 4 วัน · 4 แคมเปญ · อยู่ในช่วงเรียนรู้', icon:'bag', color:'#2E5496', tag:['ช่วงเรียนรู้','wt'],
     kpi:[
      {l:'ROAS',n:6.31,dec:2,cmp:{ar:'dn',tone:-1,txt:'ลดลง 3.99 (−38.7%)',from:'10.30'}},
      {l:'Direct ROAS',n:2.74,dec:2,cmp:{ar:'dn',tone:-1,txt:'ลดลง 2.86 (−51.1%)',from:'5.60'}},
@@ -490,7 +509,7 @@ const WEEKS = [
        ['Gataway Family Set','รายสินค้า',{n:283.93,dec:2},{n:0,dec:0},{n:5.8,dec:1},{n:0,dec:2},{n:0,dec:2},{n:0,dec:0},{n:108,dec:0},{n:3.68,dec:2,suf:'%'}]],
       tot:['รวมทั้งบัญชี','—',{n:3030.76,dec:2},{n:19115,dec:0},'—',{n:6.31,dec:2},{n:2.74,dec:2},{n:12,dec:0},{n:984,dec:0},{n:3.21,dec:2,suf:'%'}]},
 
-     {blk:{n:'แคมเปญกลุ่ม 1 · กลุ่มผ้าขนหนู',t:'กลุ่มสินค้า',b:'เป้า ROAS 7.0'},
+     {blk:{no:1,n:'กลุ่มผ้าขนหนู',t:'กลุ่มสินค้า',b:'เป้า ROAS 7.0'},
       cols:['สินค้า','ค่าโฆษณา','ยอดขาย','ROAS','Direct ROAS','ออเดอร์','คลิก','การแสดงผล','CTR'],
       dirs:[0,'nt','up','up','up','up','up','nt','up'],
       rows:[
@@ -501,7 +520,7 @@ const WEEKS = [
        ['Four Elements <span class="pill new">ตัวใหม่</span>',{n:147.08,dec:2},{n:0,dec:0},{n:0,dec:2},{n:0,dec:2},{n:0,dec:0},{n:45,dec:0},{n:1792,dec:0},{n:2.51,dec:2,suf:'%'}]],
       tot:['รวมแคมเปญ',{n:1972.18,dec:2},{n:18150,dec:0},{n:9.20,dec:2},{n:3.73,dec:2},{n:11,dec:0},{n:647,dec:0},{n:18827,dec:0},{n:3.44,dec:2,suf:'%'}]},
 
-     {blk:{n:'แคมเปญกลุ่ม 2 · กลุ่มสินค้าเด็ก',t:'กลุ่มสินค้า',b:'เป้า ROAS 5.2'},
+     {blk:{no:2,n:'กลุ่มสินค้าเด็ก',t:'กลุ่มสินค้า',b:'เป้า ROAS 5.2'},
       cols:['สินค้า','ค่าโฆษณา','ยอดขาย','ออเดอร์','คลิก','การแสดงผล','CTR'],
       dirs:[0,'nt','up','up','up','nt','up'],
       rows:[
@@ -512,21 +531,21 @@ const WEEKS = [
        ['ผ้ากันเปื้อน All-arounder Bib',{n:17.41,dec:2},{n:0,dec:0},{n:0,dec:0},{n:4,dec:0},{n:552,dec:0},{n:0.72,dec:2,suf:'%'}]],
       tot:['รวมแคมเปญ',{n:374.65,dec:2},{n:0,dec:0},{n:0,dec:0},{n:136,dec:0},{n:4843,dec:0},{n:2.81,dec:2,suf:'%'}]},
 
-     {blk:{n:'แคมเปญรายสินค้า 1 · Swift Wrap',t:'รายสินค้า',b:'เป้า ROAS 5.0'},
+     {blk:{no:3,n:'Swift Wrap',t:'รายสินค้า',b:'เป้า ROAS 5.0'},
       cols:['รายการ','ค่าโฆษณา','ยอดขาย','ROAS','Direct ROAS','ออเดอร์','ใส่ตะกร้า','คลิก','การแสดงผล','CTR'],
       dirs:[0,'nt','up','up','up','up','up','up','nt','up'],
       rows:[
        ['LUCK ผ้าคลุมผมอัจฉริยะ Swift Wrap',{n:400.00,dec:2},{n:965,dec:0},{n:2.41,dec:2},{n:2.41,dec:2},{n:1,dec:0},{n:8,dec:0},{n:93,dec:0},{n:4013,dec:0},{n:2.32,dec:2,suf:'%'}]]},
 
-     {blk:{n:'แคมเปญรายสินค้า 2 · Gataway Family Set',t:'รายสินค้า',b:'เป้า ROAS 5.8'},
+     {blk:{no:4,n:'Gataway Family Set',t:'รายสินค้า',b:'เป้า ROAS 5.8'},
       cols:['รายการ','ค่าโฆษณา','ยอดขาย','ROAS','Direct ROAS','ออเดอร์','ใส่ตะกร้า','คลิก','การแสดงผล','CTR'],
       dirs:[0,'nt','up','up','up','up','up','up','nt','up'],
       rows:[
        ['[FAMILY SET] LUCK ผ้าขนหนูอัจฉริยะ Gataway',{n:283.93,dec:2},{n:0,dec:0},{n:0,dec:2},{n:0,dec:2},{n:0,dec:0},{n:2,dec:0},{n:108,dec:0},{n:2932,dec:0},{n:3.68,dec:2,suf:'%'}]]}],
 
-    notes:[{k:'good',t:'<b>กลุ่มผ้าขนหนูคือเครื่องยนต์เกือบทั้งหมด</b> ใช้งบ 65% ของบัญชี ทำยอด 95% และ ROAS 9.20 เกินเป้า 7.0 · ในกลุ่มนี้ Splash Joy คุ้มที่สุด ROAS 17.35 จากงบ ฿392 ส่วน Gataway ทำยอดสูงสุด ฿11,345'},
-           {k:'warn',t:'<b>Terrazzo และ Gataway Family Set ยังไม่มีออเดอร์</b> ทั้งที่ CTR ปกติดี 3.60% และ 3.68% คนกดเข้าไปดูแต่ไม่ซื้อ · สองตัวนี้เคยทำยอดได้ ฿9,434 และ ฿20,996 เมื่อปลายเดือนกันยายน'},
-           {k:'',t:'<b>ยังไม่ต้องแก้อะไร</b> แคมเปญเพิ่งวิ่ง 4 วันและอยู่ในช่วงเรียนรู้ซึ่งปกติใช้เวลา 7–14 วัน · ทุกการแก้ใหญ่จะรีเซ็ตการเรียนรู้ให้เริ่มนับหนึ่งใหม่ · ประเมินอีกครั้ง 19 ต.ค.'}],
+    notes:[{k:'good',t:'<b>กลุ่มผ้าขนหนูทำยอดเกือบทั้งหมด</b> ใช้งบ 65% ของบัญชี แต่ได้ยอด 95% · ROAS 9.20 เกินเป้า 7.0 · ตัวที่ได้ยอดเยอะสุดคือ Gataway ฿11,345 · ตัวที่ใช้งบน้อยแต่ได้เยอะสุดคือ Splash Joy ลงไป ฿392 ได้กลับมา 17 เท่า'},
+           {k:'warn',t:'<b>Terrazzo กับ Gataway Family Set ยังไม่มีออเดอร์เลย</b> คนกดเข้าไปดูปกติ (CTR 3.60% และ 3.68%) แต่ไม่ซื้อ · ปลายเดือนกันยายนสองตัวนี้เคยขายได้ ฿9,434 และ ฿20,996'},
+           {k:'',t:'<b>ยังไม่ต้องแก้อะไร</b> แคมเปญเพิ่งเปิดได้ 4 วัน ระบบยังเรียนรู้อยู่ ปกติใช้เวลา 7–14 วัน · ถ้าแก้ตอนนี้ ระบบจะเริ่มเรียนรู้ใหม่ ต้องรออีกรอบ · ดูผลอีกทีวันที่ 19 ต.ค.'}],
 
     cal:{title:'ปฏิทินการแก้ไข · Shopee Ads LUCK', note:'ปักหมุดทุกการเปลี่ยนแปลงของ Shopee ในเดือนตุลาคม · วันที่ 9 ต.ค. เป็นต้นไปยังไม่มีข้อมูลผลโฆษณา',
       lastData:8,
@@ -545,18 +564,20 @@ const WEEKS = [
        ['Monitor ครบ 7 วัน · ประเมินแคมเปญรอบใหม่']
       ]}},
 
-   {name:'IG LUCK', key:'iglk', sub:'แผนยิงแอดเดือน ต.ค. · 2 โพสต์ · ยังไม่เริ่มยิง', icon:'ig', color:'#C13584', tag:['แผน · ยังไม่เริ่ม','wt'],
+   {name:'IG LUCK', key:'iglk', dsub:'พักไว้ · งานวิเคราะห์ที่เตรียมไว้', psub:'ปฏิทิน · บันทึก 1 รายการ', sub:'พักไว้ก่อน · เดือนนี้ไม่ยิงแอด', icon:'ig', color:'#C13584', tag:['พัก · ยังไม่ยิงแอด','bd'],
     igplan:{
-     banner:'<b>แท็บนี้เป็นแผน ยังไม่ใช่ผลจริงของเดือนตุลาคม</b> — ตัวเลขในการ์ดโพสต์คือผลที่เกิดขึ้นแล้วในเดือนกันยายน ซึ่งใช้เป็นฐานตัดสินใจเลือก · พอเริ่มยิงจริงแล้วจะเอา KPI และตารางผลของเดือนตุลาคมมาเติมแทนที่',
+     banner:'<b>พี่ลี่ให้พักไว้ก่อน — เดือนนี้ LUCK ยังไม่เริ่มยิงแอด IG</b>',
      acct:{h:'IG LUCK',
-      handle:'luck_th.official · ผู้ติดตาม 35,597 คน · ฐานข้อมูลที่ใช้เลือก = โพสต์ออแกนิกที่ลงในเดือนกันยายน 2569 ทั้ง 13 โพสต์ (1–30 ก.ย.)',
+      handle:'luck_th.official · ผู้ติดตาม 35,597 คน · ตั้งค่าด้านล่างคือแผนที่เตรียมไว้ ยังไม่ได้เอาไปใช้จริง',
       sets:[
        {k:'พื้นที่ยิงแอด',v:'กรุงเทพมหานคร',n:'เหมือนเดือน ก.ย. — ผู้ติดตาม 39.4% อยู่ที่นี่ ที่เหลือกระจายจังหวัดละไม่ถึง 2%'},
        {k:'ปลายทาง',v:'โปรไฟล์ IG',n:'<b>เปลี่ยนจากเดือน ก.ย.</b> ที่ส่งคนออกไปเว็บไซต์ / Shopee รอบนี้ให้จบที่โปรไฟล์'},
        {k:'เพศ / อายุ',v:'หญิง · 25–44 ปี',n:'ผู้ติดตามหญิง 91.7% ล็อกเพศไว้ไม่ให้งบรั่ว'},
-       {k:'งบ / วัน',v:'฿300 / วัน',hi:1,n:'1 ชุดโฆษณา (กทม.) มี 2 โพสต์แชร์งบก้อนเดียวกัน ≈ โพสต์ละ ฿150/วัน · 19 วัน (13–31 ต.ค.) = <b>฿5,700</b>'}]},
-     postsTitle:'2 โพสต์ที่เลือก · มี 2 ตัวเลือกให้ตัดสินใจ',
-     postsSub:'กดสลับดูได้ทั้งสองแบบ แล้วค่อยบอกว่าจะเอาแบบไหน · เหตุที่ต้องมีสองแบบ เพราะโพสต์เดือน 9 ของ LUCK ตัวเลขออแกนิกอ่อนมาก การลงงบทั้งก้อนกับของที่ไม่เคยพิสูจน์จึงมีความเสี่ยง',
+       {k:'งบ / วัน',v:'฿0 · พักอยู่',hi:1,n:'แผนเดิมคือ ฿300/วัน 1 ชุด (กทม.) 2 โพสต์ · <b>เดือนนี้ยังไม่ใช้งบ</b> เพราะพี่ลี่ให้พักไว้'}]},
+     postsTitle:'งานวิเคราะห์โพสต์ที่เตรียมไว้',
+     collapse:{id:'lkplan', label:'กางดูโพสต์ที่คัดไว้และตัวเลือก ก / ข', count:'2 ตัวเลือก',
+      note:'<b>พักไว้ รอพี่ลี่ปลดพัก</b> — งานวิเคราะห์ทำเสร็จแล้วตั้งแต่ 12 ต.ค. เก็บไว้ให้ครบ ไม่ได้ลบทิ้ง ถ้าเดือนหน้าจะยิงก็หยิบไปใช้ได้เลย'},
+     postsSub:'กดสลับดูได้ทั้งสองแบบ · เหตุที่ต้องมีสองแบบ เพราะโพสต์เดือน 9 ของ LUCK ตัวเลขออแกนิกอ่อนมาก การลงงบทั้งก้อนกับของที่ไม่เคยพิสูจน์จึงมีความเสี่ยง',
      opts:[
       {id:'a', n:'ตัวเลือก ก', t:'โพสต์เดือน 9 ล้วน 2 ตัว',
        d:'<b>ลงงบทั้ง ฿5,700 กับคอนเทนต์ใหม่</b> ได้ทดสอบว่าคอนเทนต์เดือน 9 เอามายิงแล้วไปได้ไหม และตรงตามโจทย์ที่ตั้งไว้เป๊ะ · แลกกับการที่ไม่มีตัวเลขต้นทุนจริงรองรับเลยสักตัว ถ้าทั้งคู่ไม่เวิร์ก จะเสียงบทั้งก้อนและเสียเวลา 19 วันไปด้วย',
@@ -620,29 +641,22 @@ const WEEKS = [
      note:'<b>ประมาณการผล</b> ตัวเลือก ก คาดไม่ได้เลย เพราะทั้งสองโพสต์ยังไม่เคยยิงแอด ไม่มีต้นทุนจริงให้อ้างอิง · ตัวเลือก ข คาดได้ครึ่งหนึ่ง — งบครึ่งที่ลงกับ IntelliTime ที่ ฿1.69 จะได้ราว <b>1,690 การเข้าชมโปรไฟล์</b> ส่วนอีกครึ่งเป็นการทดสอบล้วน',
      dropped:'<b>เรื่องที่ใหญ่กว่าการเลือกโพสต์</b> — เดือนกันยายน LUCK ลง 13 โพสต์ เข้าถึงคนรวมกันทั้งเดือน <b>4,553 ครั้ง</b> เฉลี่ยโพสต์ละ 350 คน บนฐานผู้ติดตาม 35,597 คน คือ<b>ไม่ถึง 1% ต่อโพสต์</b> · ทั้งเดือนมีคนแชร์รวมกัน 3 ครั้ง และกดติดตามใหม่ 1 คน · ตัวเลขระดับนี้ไม่ปกติ การยิงแอดซื้อ reach มาได้ก็จริง แต่แก้ที่ต้นเหตุไม่ได้ และพอหยุดยิงก็กลับไปที่เดิม ควรตรวจสอบแยกต่างหากว่าเกิดอะไรขึ้นกับการกระจายคอนเทนต์ของบัญชีนี้'},
     cal:{title:'ปฏิทิน IG LUCK · ตุลาคม 2569',
-      note:'เดือนนี้ยังไม่เริ่มยิง · วันที่ 13 ต.ค. เป็นกำหนดเริ่มตามแผน ปรับได้',
-      lastData:12,
+      note:'เดือนนี้ไม่มีการยิงแอด · ปฏิทินเก็บไว้บันทึกการตัดสินใจเท่านั้น',
+      lastData:14,
       events:{
         12:[{t:'วางแผนรอบใหม่ · เลือกโพสต์',k:'s'}],
-        13:[{t:'เริ่มยิงแอดรอบใหม่',k:'n'}],
-        20:[{t:'ครบ 7 วัน · รอบประเมิน',k:'m'}],
-        31:[{t:'สิ้นสุดรอบ',k:'x'}]
+        13:[{t:'พี่ลี่ให้พักไว้ก่อน · ไม่ยิงเดือนนี้',k:'x'}]
       },
       legend:[['#E6EEFA','การวางแผน / แก้ไขแอด'],['#EAF3EC','เริ่มรอบใหม่'],['#FDECEC','สิ้นสุดรอบ'],['#FFF1DB','รอบประเมิน']]},
     plan:{title:'Action Plan · IG LUCK',
-      note:'เลือกสถานะ กรอกวันที่และหมายเหตุได้เอง · ติ๊กช่องซ้ายแล้วสถานะจะเปลี่ยนเป็น “เสร็จสิ้น” อัตโนมัติ',
+      note:'เดือนนี้ไม่มีงานต้องทำ เพราะพี่ลี่ให้พักไว้ก่อน · ถ้าปลดพักเมื่อไหร่ค่อยเอางานเตรียมยิงกลับเข้ามา',
       rows:[
-       ['<b>ตัดสินใจเลือกตัวเลือก ก หรือ ข</b> ก่อนเริ่มตั้งค่า'],
-       ['ตั้งค่าแคมเปญใหม่ เป้าหมาย “การเข้าชมโปรไฟล์ Instagram”'],
-       ['ใส่ 2 โพสต์เข้าชุดโฆษณาเดียว (กทม.) งบ ฿300/วัน'],
-       ['จัดหน้าโปรไฟล์ให้พร้อมรับคน — ลิงก์ในไบโอ ไฮไลต์ และโพสต์บนสุด'],
-       ['เริ่มยิง 13 ต.ค.'],
-       ['ครบ 7 วัน เทียบต้นทุนต่อโปรไฟล์ของสองโพสต์ แล้วตัดตัวที่แพงกว่า']
+       ['<b>พักการยิงแอด IG ของ LUCK</b>']
       ]}}
   ]},
 
   {name:'ATELIER', color:'#A32C63', sub:'Instagram', ch:[
-   {name:'IG ATELIER', key:'igat', sub:'แผนยิงแอดเดือน ต.ค. · 2 โพสต์ · ยังไม่เริ่มยิง', icon:'ig', color:'#A32C63', tag:['แผน · ยังไม่เริ่ม','wt'],
+   {name:'IG ATELIER', key:'igat', dsub:'ตั้งค่า · 2 โพสต์ที่เลือก', sub:'แผนยิงแอดเดือน ต.ค. · 2 โพสต์ · เริ่ม 15 ต.ค.', icon:'ig', color:'#A32C63', tag:['แผน · เริ่ม 15 ต.ค.','wt'],
     igplan:{
      banner:'<b>แท็บนี้เป็นแผน ยังไม่ใช่ผลจริงของเดือนตุลาคม</b> — ตัวเลขในการ์ดโพสต์คือผลออแกนิกของเดือนกันยายน ซึ่งใช้เป็นฐานตัดสินใจเลือก · พอเริ่มยิงจริงแล้วจะเอา KPI และตารางผลของเดือนตุลาคมมาเติมแทนที่',
      acct:{h:'IG ATELIER',
@@ -651,7 +665,7 @@ const WEEKS = [
        {k:'พื้นที่ยิงแอด',v:'กรุงเทพฯ + ภูเก็ต',n:'แยก 2 ชุดโฆษณาเหมือนเดือน ก.ย. ถ้ารวมเป็นชุดเดียวระบบจะเทงบไป กทม. จนหมด ภูเก็ตจะไม่ได้ยิงเลย'},
        {k:'ปลายทาง',v:'โปรไฟล์ IG',n:'<b>เปลี่ยนจากเดือน ก.ย.</b> ที่ส่งคนออกไปเว็บไซต์ / LINE รอบนี้ให้จบที่โปรไฟล์'},
        {k:'กลุ่มอาชีพ',v:'ดีไซเนอร์ + อินทีเรีย',n:'อายุ 25–44 · พุ่งไปที่คนในสายออกแบบโดยตรง ไม่กระจายไปเจ้าของบ้านทั่วไป'},
-       {k:'งบ / วัน',v:'฿300 / วัน',hi:1,n:'แยก 2 ชุด (กทม. + ภูเก็ต) ชุดละ ฿150/วัน · แต่ละชุดมี 2 โพสต์ ≈ โพสต์ละ ฿75/วัน · 19 วัน (13–31 ต.ค.) = <b>฿5,700</b>'}]},
+       {k:'งบ / วัน',v:'฿300 / วัน',hi:1,n:'แยก 2 ชุด (กทม. + ภูเก็ต) ชุดละ ฿150/วัน · แต่ละชุดมี 2 โพสต์ ≈ โพสต์ละ ฿75/วัน · 17 วัน (15–31 ต.ค.) = <b>฿5,100</b>'}]},
      postsTitle:'2 โพสต์ที่เลือก',
      postsSub:'คัดจาก 26 โพสต์ที่ลงในเดือนกันยายน · เกณฑ์คือ Reach · แชร์ · เซฟ · และจำนวนคนกดติดตาม ซึ่งเป็นตัวแทนที่ใกล้ที่สุดของการเข้าชมโปรไฟล์ เพราะคนจะกดติดตามได้ต้องเข้าโปรไฟล์ก่อน',
      posts:[
@@ -682,15 +696,15 @@ const WEEKS = [
         ['Objective','<span class="igchip o">การเข้าชมโปรไฟล์ Instagram</span>'],
         ['ความเสี่ยง','ยังไม่เคยยิงแอด ไม่มีต้นทุนจริงให้อ้างอิง · Reach 8,233 ถือว่าน้อยกว่าโพสต์ 1 ถึง 9 เท่า ยังไม่รู้ว่าพอเติมงบแล้วจะขยายได้ไกลเท่ากันไหม']]}
      ],
-     note:'<b>ประมาณการผล</b> คาดได้ไม่แม่นเท่ารอบก่อน เพราะสองโพสต์นี้ยังไม่เคยยิงแอด · ถ้าอ้างอิงต้นทุนของโพสต์มุกที่ยิงไปเดือน ก.ย. (เหนือฟ้า ยังมีฟ้า ทำได้ ฿0.67 ต่อการเข้าชมโปรไฟล์) งบ ฿5,700 จะได้ราว <b>8,500 การเข้าชมโปรไฟล์</b> แต่เป็นการอ้างอิงข้ามโพสต์ ตัวเลขจริงอาจต่างได้มาก',
+     note:'<b>ประมาณการผล</b> คาดได้ไม่แม่นเท่ารอบก่อน เพราะสองโพสต์นี้ยังไม่เคยยิงแอด · ถ้าอ้างอิงต้นทุนของโพสต์มุกที่ยิงไปเดือน ก.ย. (เหนือฟ้า ยังมีฟ้า ทำได้ ฿0.67 ต่อการเข้าชมโปรไฟล์) งบ ฿5,100 จะได้ราว <b>7,600 การเข้าชมโปรไฟล์</b> แต่เป็นการอ้างอิงข้ามโพสต์ ตัวเลขจริงอาจต่างได้มาก',
      dropped:'<b>ข้อสังเกตจากข้อมูลทั้ง 26 โพสต์</b> — 8 อันดับแรกเป็น<b>มุกสายอาชีพภาษาไทย</b>ทั้งหมด (Reach 2,141–72,884) ส่วนโพสต์สินค้าแคปชันอังกฤษพร้อมสเปก — Octavia Console · Penny Sofa · Talia Chair · Ganya Coffee Table และอีก 14 ตัว — อยู่ที่ Reach 200–520 ทุกตัวไม่มีข้อยกเว้น ต่างกันเป็นร้อยเท่า · แปลว่าคนตามเพจนี้เพราะมุกคนทำงาน ไม่ใช่เพราะอยากดูแคตตาล็อก การยิงแอดจึงต้องใช้มุกเป็นตัวเปิดเสมอ แล้วให้โปรไฟล์ทำหน้าที่ขายของ ไม่ใช่เอาโพสต์สินค้าไปยิงตรง ๆ'},
     cal:{title:'ปฏิทิน IG ATELIER · ตุลาคม 2569',
-      note:'เดือนนี้ยังไม่เริ่มยิง · วันที่ 13 ต.ค. เป็นกำหนดเริ่มตามแผน ปรับได้',
-      lastData:12,
+      note:'เดือนนี้ยังไม่เริ่มยิง · กำหนดเริ่ม 15 ต.ค. ตามแผน',
+      lastData:14,
       events:{
         12:[{t:'วางแผนรอบใหม่ · เลือกโพสต์',k:'s'}],
-        13:[{t:'เริ่มยิงแอดรอบใหม่',k:'n'}],
-        20:[{t:'ครบ 7 วัน · รอบประเมิน',k:'m'}],
+        15:[{t:'เริ่มยิงแอดรอบใหม่',k:'n'}],
+        22:[{t:'ครบ 7 วัน · รอบประเมิน',k:'m'}],
         31:[{t:'สิ้นสุดรอบ',k:'x'}]
       },
       legend:[['#E6EEFA','การวางแผน / แก้ไขแอด'],['#EAF3EC','เริ่มรอบใหม่'],['#FDECEC','สิ้นสุดรอบ'],['#FFF1DB','รอบประเมิน']]},
@@ -700,14 +714,14 @@ const WEEKS = [
        ['ตั้งค่าแคมเปญใหม่ เป้าหมาย “การเข้าชมโปรไฟล์ Instagram”'],
        ['แยก 2 ชุดโฆษณา กทม. และ ภูเก็ต ชุดละ ฿150/วัน ใส่โพสต์ชุดละ 2 ตัว'],
        ['จัดหน้าโปรไฟล์ให้พร้อมรับคน — ลิงก์ในไบโอ ไฮไลต์ และโพสต์บนสุด'],
-       ['เริ่มยิง 13 ต.ค.'],
+       ['เริ่มยิง 15 ต.ค.'],
        ['ครบ 7 วัน เทียบต้นทุนต่อโปรไฟล์ของสองโพสต์ แล้วตัดตัวที่แพงกว่า'],
        ['ตัดสินใจเรื่องชุดภูเก็ต — ยิงต่อหรือยุบงบมารวมที่ กทม.']
       ]}}
   ]},
 
   {name:'Website WPC', color:'var(--wpc)', sub:'Google Ads · Search', ch:[
-   {name:'Website WPC', key:'wpc', sub:'Google Ads · Search · 1–7 ต.ค. · 7 วัน · 1 แคมเปญ · 1 Ad Group', icon:'globe', color:'#5B4BA8', tag:['ต้องทบทวน','bd'],
+   {name:'Website WPC', key:'wpc', dsub:'KPI · 1 แคมเปญ · คีย์เวิร์ด', sub:'Google Ads · Search · 1–7 ต.ค. · 7 วัน · 1 แคมเปญ · 1 Ad Group', icon:'globe', color:'#5B4BA8', tag:['ต้องทบทวน','bd'],
     kpi:[
      {l:'คลิกเข้าเว็บไซต์',n:253,dec:0,cmp:{ar:'dn',tone:-1,txt:'ลดลง 180 (−41.6%)',from:'433'}},
      {l:'ต้นทุนต่อคลิก',n:5.86,dec:2,pre:'฿',cmp:{ar:'up',tone:-1,txt:'เพิ่มขึ้น ฿2.02 (+52.6%)',from:'฿3.84'}},
@@ -717,7 +731,7 @@ const WEEKS = [
     kpiNote:'เทียบกับสัปดาห์สุดท้ายของเดือนกันยายน (25 ก.ย.–1 ต.ค.) · ทั้งสองช่วงมี 7 วันเท่ากัน จึงเทียบกันได้ตรง ๆ ทุกตัว',
     tables:[
      {struct:true,label:'โครงสร้างแคมเปญ',sub:'เดือนนี้มีแคมเปญเดียวและ Ad Group เดียวที่เปิดอยู่ · กลุ่ม 01 - แบตเตอรี่ ปิดไปแล้วตั้งแต่ 28 ก.ย. จึงไม่นับในรายงานนี้',
-      cmp:{n:'WPC | Search | ทั่วไป - Search Campaign',s:[{l:'ค่าโฆษณา',v:{n:1483.38,dec:2,pre:'฿'}},{l:'คลิก',v:{n:253,dec:0}},{l:'การแสดงผล',v:{n:2733,dec:0}},{l:'CTR',v:{n:9.26,dec:2,suf:'%'},g:1},{l:'ต้นทุน/คลิก',v:{n:5.86,dec:2,pre:'฿'}},{l:'Conversion',v:{n:3.00,dec:2},g:1}]},
+      cmp:{no:1,n:'WPC | Search | ทั่วไป - Search Campaign',s:[{l:'ค่าโฆษณา',v:{n:1483.38,dec:2,pre:'฿'}},{l:'คลิก',v:{n:253,dec:0}},{l:'การแสดงผล',v:{n:2733,dec:0}},{l:'CTR',v:{n:9.26,dec:2,suf:'%'},g:1},{l:'ต้นทุน/คลิก',v:{n:5.86,dec:2,pre:'฿'}},{l:'Conversion',v:{n:3.00,dec:2},g:1}]},
       ags:[
        {n:'02 - ทั่วไป',s:[{l:'ค่าโฆษณา',v:{n:1483.38,dec:2,pre:'฿'}},{l:'คลิก',v:{n:253,dec:0}},{l:'การแสดงผล',v:{n:2733,dec:0}},{l:'CTR',v:{n:9.26,dec:2,suf:'%'},g:1},{l:'ต้นทุน/คลิก',v:{n:5.86,dec:2,pre:'฿'}},{l:'Conversion',v:{n:3.00,dec:2},g:1}],
         kw:{id:'kw02', count:'26 คำ', table:{sub:'รวม 26 คำ ฿1,482.40 · 251 คลิก · 3.00 Conversion — ต่างจากยอดแคมเปญ ฿1,483.38 / 253 คลิก อยู่เล็กน้อย เพราะ Google ปัดเศษและมีคลิกบางส่วนที่ไม่ผูกกับคีย์เวิร์ดใด · 9 คำท้ายตารางยังไม่มีการแสดงผลเลย',
@@ -776,8 +790,8 @@ const WEEKS = [
     changes:[['ทั้งสัปดาห์','ยิงเฉพาะกรุงเทพฯ ต่อเนื่องจากการเปลี่ยนเมื่อ 28 ก.ย. — สัปดาห์แรกที่ได้ข้อมูลเต็ม 7 วัน'],
              ['ไม่ระบุวัน','มีคีย์เวิร์ดใหม่เข้ามาในกลุ่ม 02 เช่น วรจักร · อะไหล่ TOYOTA · อะไหล่ MG · อะไหล่แท้ <span class="sub">ไฟล์รอบนี้ไม่มีประวัติการเปลี่ยนแปลง จึงระบุวันที่ไม่ได้</span>']],
 
-    notes:[{k:'good',t:'<b>การจำกัดพื้นที่เฉพาะกรุงเทพฯ ทำให้คุณภาพดีขึ้นจริง</b> CTR ขึ้นจาก 3.68% เป็น 9.26% สูงสุดเท่าที่บัญชีนี้เคยทำได้ และ Conversion ขึ้นจาก 2.00 เป็น 3.00 ด้วยงบที่น้อยลง ฿180 · ต้นทุนต่อ Conversion ดีขึ้นจาก ฿831.82 เหลือ ฿494.46 · คำใหม่กลุ่ม “วรจักร” ทำผลดีที่สุด CTR 12.90–18.40% คะแนนคุณภาพ 5–7'},
-           {k:'warn',t:'<b>แต่ปริมาณหายไปมาก</b> การแสดงผลลดจาก 11,770 เหลือ 2,733 (−76.8%) คลิกลดจาก 433 เหลือ 253 (−41.6%) และต้นทุนต่อคลิกขึ้นจาก ฿3.84 เป็น ฿5.86 · นี่คือข้อมูลเต็ม 7 วันชุดแรกที่ใช้ตัดสินใจเรื่องพื้นที่ได้'}],
+    notes:[{k:'good',t:'<b>ยิงเฉพาะกรุงเทพฯ แล้วได้คนตรงกลุ่มขึ้นจริง</b> คนกดโฆษณาเพิ่มจาก 3.68% เป็น 9.26% สูงสุดเท่าที่เคยทำได้ · ได้ลูกค้าติดต่อกลับเพิ่มจาก 2 เป็น 3 ราย ทั้งที่ใช้งบน้อยลง ฿180 · ค่าใช้จ่ายต่อ 1 รายที่ติดต่อกลับถูกลงจาก ฿832 เหลือ ฿494 · คำใหม่กลุ่ม “วรจักร” ได้ผลดีที่สุด'},
+           {k:'warn',t:'<b>แต่คนเห็นโฆษณาน้อยลงมาก</b> จาก 11,770 ครั้ง เหลือ 2,733 ครั้ง · คนกดเข้าเว็บลดจาก 433 เหลือ 253 · และจ่ายต่อคลิกแพงขึ้นจาก ฿3.84 เป็น ฿5.86 · แลกกันระหว่างคนน้อยลงแต่ตรงกลุ่มขึ้น'}],
 
     cal:{title:'ปฏิทินการแก้ไข · Website WPC', note:'ปักหมุดทุกการเปลี่ยนแปลงของ Google Ads ในเดือนตุลาคม · วันที่ 8 ต.ค. เป็นต้นไปยังไม่มีข้อมูลผลโฆษณา',
       lastData:7,
@@ -789,7 +803,7 @@ const WEEKS = [
     plan:{title:'Action Plan · Website WPC',
       note:'เลือกสถานะ กรอกวันที่และหมายเหตุได้เอง · ติ๊กช่องซ้ายแล้วสถานะจะเปลี่ยนเป็น “เสร็จสิ้น” อัตโนมัติ',
       rows:[
-       ['ตั้งค่าให้ระบบนับได้ว่าลูกค้าโทรหรือทักมาจริงกี่ราย'],
+       ['ตั้งค่า Conversion Tracking การโทร'],
        ['ปรับหน้าเว็บปลายทางให้โหลดเร็วและตรงกับคำค้น']
       ]}}
   ]}
@@ -871,18 +885,29 @@ function tableGrid(t,extra){
   if(extra)h+=extra;
   return h+'</tbody></table></div>';
 }
-function hintLine(t){
-  var up=[],dn=[];
-  (t.dirs||[]).forEach(function(x,i){ if(x==='up')up.push(t.cols[i]); else if(x==='dn')dn.push(t.cols[i]); });
+var HINTCOL=null;
+function hintHTML(up,dn){
   if(!up.length&&!dn.length)return '';
   return '<div class="hint">'+
      (up.length?'<span><b>ยิ่งมากยิ่งดี</b> '+up.join(' · ')+'</span>':'')+
      (dn.length?'<span><b>ยิ่งน้อยยิ่งดี</b> '+dn.join(' · ')+'</span>':'')+'</div>';
 }
+function hintLine(t){
+  var up=[],dn=[];
+  (t.dirs||[]).forEach(function(x,i){ if(x==='up')up.push(t.cols[i]); else if(x==='dn')dn.push(t.cols[i]); });
+  if(!up.length&&!dn.length)return '';
+  if(HINTCOL){
+    up.forEach(function(x){ if(HINTCOL.up.indexOf(x)<0)HINTCOL.up.push(x); });
+    dn.forEach(function(x){ if(HINTCOL.dn.indexOf(x)<0)HINTCOL.dn.push(x); });
+    return '';
+  }
+  return hintHTML(up,dn);
+}
 function tableHTML(t){
   var h='<div class="sec">';
   if(t.blk){
-    h+='<div class="blkh"><span class="blkn">'+t.blk.n+'</span>'+
+    h+='<div class="blkh">'+(t.blk.no?'<span class="blkno">'+t.blk.no+'</span>':'')+
+       '<span class="blkn">'+t.blk.n+'</span>'+
        (t.blk.t?'<span class="blkt">'+t.blk.t+'</span>':'')+
        (t.blk.b?'<span class="blkb">'+t.blk.b+'</span>':'')+'</div>';
   } else {
@@ -924,7 +949,9 @@ function structHTML(t){
   var h='<div class="sec"><div class="sh">'+ic('chart')+' '+t.label+'</div>';
   if(t.sub)h+='<div class="ss">'+t.sub+'</div>';
   var solo=(t.ags.length===1);
-  h+='<div class="cstr"><div class="cshd"><span class="csnm">'+t.cmp.n+'</span>'+
+  h+='<div class="cstr"><div class="cshd">'+
+     (t.cmp.no?'<span class="blkno">'+t.cmp.no+'</span>':'')+
+     '<span class="csnm">'+t.cmp.n+'</span>'+
      '<span class="cstag">แคมเปญ</span></div>'+statStrip(t.cmp.s,'csstats');
   h+='<div class="csagw">'+t.ags.map(function(a){
     var x='<div class="csag"><div class="csaghd"><span class="csagnm">'+a.n+'</span>'+
@@ -973,23 +1000,35 @@ function igPlanHTML(p,key){
        return '<div class="igset'+(s.hi?' hi':'')+'"><div class="k">'+s.k+'</div>'+
               '<div class="v">'+s.v+'</div><div class="n">'+s.n+'</div></div>';
      }).join('')+'</div></div></div>';
-  h+='<div class="sec"><div class="sh">'+ic('tag')+' '+p.postsTitle+'</div>';
-  if(p.postsSub)h+='<div class="ss">'+p.postsSub+'</div>';
+  var ps='';
+  if(p.postsSub)ps+='<div class="ss">'+p.postsSub+'</div>';
   if(p.opts){
-    h+='<div class="optsel">'+p.opts.map(function(o,i){
+    ps+='<div class="optsel">'+p.opts.map(function(o,i){
       return '<button class="optbtn'+(i===0?' on':'')+'" data-opt="'+o.id+'" data-grp="'+key+'">'+
              '<div class="o1">'+o.n+(o.rec?'<span class="optrec">ผมแนะนำ</span>':'')+'</div>'+
              '<div class="o2">'+o.t+'</div></button>';
     }).join('')+'</div>';
-    h+=p.opts.map(function(o,i){
+    ps+=p.opts.map(function(o,i){
       return '<div class="optpane" id="opt-'+key+'-'+o.id+'"'+(i===0?'':' hidden')+'>'+
              '<div class="optd">'+o.d+'</div>'+o.posts.map(ipostHTML).join('')+'</div>';
     }).join('');
   } else {
-    h+=p.posts.map(ipostHTML).join('');
+    ps+=p.posts.map(ipostHTML).join('');
   }
-  if(p.note)h+='<div class="note">'+p.note+'</div>';
-  if(p.dropped)h+='<div class="note warn">'+p.dropped+'</div>';
+  if(p.note)ps+='<div class="note">'+p.note+'</div>';
+  if(p.dropped)ps+='<div class="note warn">'+p.dropped+'</div>';
+
+  h+='<div class="sec">';
+  if(p.collapse){
+    var c=p.collapse;
+    h+='<div class="sh">'+ic('tag')+' '+p.postsTitle+'</div>'+
+       (c.note?'<div class="ss">'+c.note+'</div>':'')+
+       '<div class="exstand"><button class="exbtn" data-ex="'+c.id+'"><span class="exar">▸</span> '+
+       c.label+' <span class="excount">'+c.count+'</span></button></div>'+
+       '<div class="expanel2" id="ex-'+c.id+'" hidden>'+ps+'</div>';
+  } else {
+    h+='<div class="sh">'+ic('tag')+' '+p.postsTitle+'</div>'+ps;
+  }
   return h+'</div>';
 }
 
@@ -1047,21 +1086,40 @@ function channelHTML(ch){
     '<div class="chname">'+ch.name+'<small>'+((ch.bizName&&ch.bizName!==ch.name)?ch.bizName+' · ':'')+ch.sub+'</small></div>';
   if(ch.tag)h+='<div class="chtag tg-'+ch.tag[1]+'">'+ch.tag[0]+'</div>';
   h+='</div>';
+
+  var d='';
+  HINTCOL={up:[],dn:[]};
   if(ch.igplan){
-    h+=igPlanHTML(ch.igplan,ch.key)+calHTML(ch.cal)+planHTML(ch.plan,ch.key);
-    return h+'</div>';
+    d=igPlanHTML(ch.igplan,ch.key);
+  } else {
+    d=kpiRow(ch)+vsHTML(ch.vs);
+    (ch.tables||[]).forEach(function(t){d+=(t.struct?structHTML(t):tableHTML(t));});
+    if(ch.changes&&ch.changes.length){
+      d+='<div class="sec"><div class="sh">'+ic('cal')+' สิ่งที่ปรับระหว่างสัปดาห์</div><div class="tw"><table style="min-width:420px"><thead><tr><th>วันที่</th><th style="text-align:left">การเปลี่ยนแปลง</th></tr></thead><tbody>'+
+        ch.changes.map(function(c){return '<tr><td>'+c[0]+'</td><td style="text-align:left;white-space:normal;font-weight:500;color:#3E4A5C">'+c[1]+'</td></tr>';}).join('')+
+        '</tbody></table></div></div>';
+    }
+    if(ch.notes&&ch.notes.length){
+      d+='<div class="sec">'+ch.notes.map(function(n){return '<div class="note '+(n.k||'')+'">'+n.t+'</div>';}).join('')+'</div>';
+    }
   }
-  h+=kpiRow(ch)+vsHTML(ch.vs);
-  (ch.tables||[]).forEach(function(t){h+=(t.struct?structHTML(t):tableHTML(t));});
-  if(ch.changes&&ch.changes.length){
-    h+='<div class="sec"><div class="sh">'+ic('cal')+' สิ่งที่ปรับระหว่างสัปดาห์</div><div class="tw"><table style="min-width:420px"><thead><tr><th>วันที่</th><th style="text-align:left">การเปลี่ยนแปลง</th></tr></thead><tbody>'+
-      ch.changes.map(function(c){return '<tr><td>'+c[0]+'</td><td style="text-align:left;white-space:normal;font-weight:500;color:#3E4A5C">'+c[1]+'</td></tr>';}).join('')+
-      '</tbody></table></div></div>';
-  }
-  if(ch.notes&&ch.notes.length){
-    h+='<div class="sec">'+ch.notes.map(function(n){return '<div class="note '+(n.k||'')+'">'+n.t+'</div>';}).join('')+'</div>';
-  }
-  h+=calHTML(ch.cal)+planHTML(ch.plan,ch.key);
+
+  var hf=hintHTML(HINTCOL.up,HINTCOL.dn);
+  HINTCOL=null;
+  if(hf)d+='<div class="hintfoot">'+hf+'</div>';
+  var nTask=(ch.plan&&ch.plan.rows)?ch.plan.rows.length:0;
+  var psub=ch.psub||('ปฏิทิน · เช็คลิสต์ '+nTask+' งาน');
+  h+='<div class="subsel">'+
+     '<button class="subbtn on" data-sub="d" data-ch="'+ch.key+'">'+
+       '<span class="sic">'+ic('chart')+'</span><span>'+
+       '<span class="s1">'+(ch.igplan?'แผนยิงแอด':'ข้อมูลแคมเปญ')+'</span>'+
+       '<span class="s2">'+(ch.dsub||'')+'</span></span></button>'+
+     '<button class="subbtn" data-sub="p" data-ch="'+ch.key+'">'+
+       '<span class="sic">'+ic('check')+'</span><span>'+
+       '<span class="s1">Action Plan</span>'+
+       '<span class="s2">'+psub+'</span></span></button></div>'+
+     '<div class="subpane" id="sub-'+ch.key+'-d">'+d+'</div>'+
+     '<div class="subpane" id="sub-'+ch.key+'-p" hidden>'+calHTML(ch.cal)+planHTML(ch.plan,ch.key)+'</div>';
   return h+'</div>';
 }
 
@@ -1102,6 +1160,16 @@ function bindWeek(){
       if(open)p.removeAttribute('hidden'); else p.setAttribute('hidden','');
       b.querySelector('.exar').textContent=open?'▾':'▸';
       b.classList.toggle('on',open);
+    };
+  });
+  document.querySelectorAll('.subbtn').forEach(function(b){
+    b.onclick=function(){
+      var k=b.getAttribute('data-ch');
+      document.querySelectorAll('.subbtn[data-ch="'+k+'"]').forEach(function(x){
+        x.classList.toggle('on', x===b);
+        var pane=document.getElementById('sub-'+k+'-'+x.getAttribute('data-sub'));
+        if(pane){ if(x===b)pane.removeAttribute('hidden'); else pane.setAttribute('hidden',''); }
+      });
     };
   });
   document.querySelectorAll('.optbtn').forEach(function(b){
@@ -1178,7 +1246,7 @@ function draw(){
   }).join('');
   document.getElementById('panes').innerHTML='<div class="pane on">'+(curTab===0?weekPane():monthPane())+'</div>';
   document.getElementById('globalfoot').innerHTML=
-    'แดชบอร์ดนี้รวมรายสัปดาห์และสรุปรายเดือนไว้ในไฟล์เดียว · เดือนตุลาคม 2569 มี 4 ช่องทาง — Shopee Ads LUCK และ Google Ads WPC ยิงแล้วและมีตัวเลขจริง ส่วน IG LUCK และ IG ATELIER ยังเป็นแผน กำหนดเริ่ม 13 ต.ค. ตัวเลขในสองแท็บนั้นเป็นผลของเดือนกันยายนที่ใช้เลือกโพสต์ · ตัวเลข Shopee ในแท็บ Weekly เป็นของแคมเปญรอบใหม่ที่เปิด 5 ต.ค. เท่านั้น ส่วนการ์ดงบประมาณใช้ยอดตัดเครดิตจริงจากบัญชี · ช่วงข้อมูลแต่ละช่องทางไม่เท่ากัน Shopee 5–8 ต.ค. และ Google Ads 1–7 ต.ค. จึงอ่านตัวเลขแยกกันเสมอ · Action Plan และปฏิทินอยู่ท้ายการ์ดของแต่ละช่องทาง';
+    'แดชบอร์ดนี้รวมรายสัปดาห์และสรุปรายเดือนไว้ในไฟล์เดียว · เดือนตุลาคม 2569 มี 4 ช่องทาง — Shopee Ads LUCK และ Google Ads WPC ยิงแล้วและมีตัวเลขจริง · IG ATELIER เป็นแผน กำหนดเริ่ม 15 ต.ค. · IG LUCK พี่ลี่ให้พักไว้ก่อน เดือนนี้ไม่ยิง ตัวเลขในแท็บ IG เป็นผลของเดือนกันยายนที่ใช้เลือกโพสต์ · ตัวเลข Shopee ในแท็บ Weekly เป็นของแคมเปญรอบใหม่ที่เปิด 5 ต.ค. เท่านั้น ส่วนการ์ดงบประมาณใช้ยอดตัดเครดิตจริงจากบัญชี · ช่วงข้อมูลแต่ละช่องทางไม่เท่ากัน Shopee 5–8 ต.ค. และ Google Ads 1–7 ต.ค. จึงอ่านตัวเลขแยกกันเสมอ · ปฏิทินและ Action Plan อยู่ในแท็บย่อย Action Plan ของแต่ละช่องทาง';
   document.querySelectorAll('.tab').forEach(function(b){
     b.onclick=function(){curTab=+b.getAttribute('data-t');draw();window.scrollTo({top:0,behavior:'smooth'});};
   });
